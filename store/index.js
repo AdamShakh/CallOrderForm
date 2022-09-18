@@ -1,4 +1,3 @@
-
 export const state = () => ({
     Cities: [
         {
@@ -41,5 +40,14 @@ export const mutations = {
     openFormModal(state, id) {
         state.showFormModal = true;
         state.currentCityId = id;
+    },
+    closeFormModal(state) {
+        state.showFormModal = false;
+    }
+}
+
+export const actions = {
+    PostRequest({ commit }, request) {
+        // commit('')
     }
 }
