@@ -1,10 +1,11 @@
 <template>
-<div class="min-w-full" style="min-height: 660px;">
+<div class="min-w-full min-h-fit">
 
     <form-modal></form-modal>
 
-    <div class="flex pt-5 pl-5 ml-16">
-       <btn v-for="(city, i) in cities" :key="i" v-bind="{...city, color: colorsForBtns[i]}" class="mr-5"/> 
+    <div class="p-2.5 sm:flex sm:p-5 sm:ml-5 lg:ml-16">
+       <btn v-for="(city, i) in cities" :key="i" v-bind="{...city, color: colorsForBtns[i]}" 
+            class="mb-2.5 sm:mr-5 sm:mb-0"/>
     </div>
 
 </div>
