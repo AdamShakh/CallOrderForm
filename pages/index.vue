@@ -2,6 +2,7 @@
 <div class="min-w-full min-h-fit">
 
     <form-modal></form-modal>
+    <response-modal></response-modal>
 
     <div class="p-2.5 sm:flex sm:p-5 sm:ml-5 lg:ml-16">
        <btn v-for="(city, i) in cities" :key="i" v-bind="{...city, color: colorsForBtns[i]}" 
@@ -14,12 +15,13 @@
 <script>
 import Btn from '@/components/Btn.vue';
 import FormModal from '@/components/FormModal.vue';
+import ResponseModal from '@/components/ResponseModal.vue';
 import { mapGetters } from 'vuex';
 
 export default {
     name: 'IndexPage',
     components: {
-        Btn, FormModal
+        Btn, FormModal, ResponseModal
     },
     computed: {
         ...mapGetters({

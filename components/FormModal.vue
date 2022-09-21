@@ -67,7 +67,7 @@ export default {
     computed: {
         ...mapState({
             show:   'showFormModal',
-            city_id: 'currentCityId',
+            cityId: 'currentCityId',
         }),
         ...mapGetters({
             cities: 'getCitiesForSelect'
@@ -77,12 +77,18 @@ export default {
         name:    '',
         phone:   '',
         email:   '',
+        city_id: 1,
         invalid: {
             name: false, phone: false, email: false
         }
     }),
     mounted() {
         this.$phoneMaskAt('#phone');
+    },
+    watch: {
+        cityId(){
+            this.city_id = this.cityId;
+        }
     },
     methods: {
         ...mapMutations({
@@ -146,13 +152,13 @@ export default {
 
 @layer components {
     .modal {
-        @apply px-5 py-6 sm:px-6 sm:pb-8 lg:pb-7
+        @apply px-5 pt-6 pb-5 sm:px-6 sm:pb-8 lg:pb-6
                bg-white rounded-md shadow-sm 
                text-black not-italic font-medium text-base leading-5;
     }
     .input {
         @apply py-2 px-3 h-10
-               text-gray-900 font-normal text-gray-900 placeholder:text-gray-500 
+               text-gray-900 font-normal placeholder:text-gray-500 
                bg-white border border-solid border-gray-300 shadow-sm rounded-md
                focus:outline-none focus:ring-2 focus:ring-gray-300;
     }
