@@ -8,36 +8,42 @@
         <div class="grid grid-cols-[315px] sm:grid-cols-3 lg:grid-cols-4 gap-5 gap-x-7 lg:gap-x-5">
  
             <div class="h-16 col-start-1 row-start-2 sm:col-start-2 lg:col-start-1 sm:row-start-1">
-                <div id="nameField" class="absolute flex flex-col">
+                <div class="absolute flex flex-col">
                     <span class="h-5 text-gray-700 mb-1">Имя*</span>
-                    <input id="name" v-model="name" class="input w-80 sm:w-48 lg:w-48" type="text" 
+                    <input id="name" v-model="name" class="input w-80 sm:w-48 lg:w-44" type="text" 
                         placeholder="Иван Иванов">
+                    <span v-show="invalid.name" class="absolute -bottom-4 text-xs text-pink-500"
+                        >Обязательное Поле</span>
                 </div>
             </div>
 
             <div class="h-16 col-start-1 row-start-1 sm:col-start-1 lg:col-start-2 sm:row-start-1">
-                <div id="phoneField" class="absolute flex flex-col">
+                <div class="absolute flex flex-col">
                     <span class="h-5 text-gray-700 mb-1">Телефон*</span>
-                    <input id="phone" v-model="phone" class="input w-80 sm:w-48 lg:w-48" type="text" 
+                    <input id="phone" v-model="phone" class="input w-80 sm:w-48 lg:w-44" type="text" 
                         placeholder="+7 (___) ___-__-__">
+                    <span v-show="invalid.phone" class="absolute -bottom-4 text-xs text-pink-500"
+                        >Обязательное Поле</span>
                 </div>
             </div>
             
             <div class="h-16 col-start-1 row-start-3 sm:col-start-3 sm:row-start-1">
-                <div id="emailField" class="absolute flex flex-col">
+                <div class="absolute flex flex-col">
                     <span class="h-5 text-gray-700 mb-1">Email*</span>
-                    <input id="email" v-model="email" class="input w-80 sm:w-48 lg:w-48" type="text" 
+                    <input id="email" v-model="email" class="input w-80 sm:w-48 lg:w-44" type="text" 
                         placeholder="you@example.com">
+                    <span v-show="invalid.email" class="absolute -bottom-4 text-xs text-pink-500"
+                        >Обязательное Поле</span>
                 </div>
             </div>
 
-            <div id="cityIdField" class="flex flex-col
+            <div class="flex flex-col
                         col-start-1 row-start-4
                         sm:col-start-1 sm:col-end-3 sm:row-start-2 
                         lg:col-start-4 lg:col-end-5 lg:row-start-1">
                 <span class="h-5 text-gray-700 mb-1">Город*</span>
                 
-                <select id="city_id" v-model="city_id" class="input w-80 sm:w-full lg:w-48">
+                <select id="city_id" v-model="city_id" class="input w-80 sm:w-full lg:w-44">
                     <option v-for="(city, i) in cities" :key="i" :value="city.id" :id="'opt-'+i"
                         >{{ city.name }}</option>
                 </select>
@@ -71,6 +77,9 @@ export default {
         name:    '',
         phone:   '',
         email:   '',
+        invalid: {
+            name: false, phone: false, email: false
+        }
     }),
     mounted() {
         this.$phoneMaskAt('#phone');
@@ -114,18 +123,11 @@ export default {
         },
         manageInvalidity(invalids) {
             const inputs = ['name', 'phone', 'email'];
-            const fields = ['nameField', 'phoneField', 'emailField'];
-            inputs.forEach((id, i) => {
-                let input = document.getElementById(id);
-                let field = document.getElementById(fields[i]);
-                if (invalids.indexOf(id) != -1) {
-                    input.setAttribute('invalid', true);
-                    field.classList.add('invalidityWarning');
-                }
-                else {
-                    input.removeAttribute('invalid');
-                    field.classList.remove('invalidityWarning');
-                }
+            inputs.forEach(input => {
+                if (invalids.indexOf(input) != -1) 
+                    this.invalid[input] = true;
+                else
+                    this.invalid[input] = false;
             });
         },
         validateEmail(email) {
@@ -153,16 +155,9 @@ export default {
                text-gray-900 font-normal text-gray-900 placeholder:text-gray-500 
                bg-white border border-solid border-gray-300 shadow-sm rounded-md
                focus:outline-none focus:ring-2 focus:ring-gray-300;
-        &[invalid] {
-            @apply border-pink-500 text-pink-600 placeholder:text-pink-500
-                   focus:border-pink-500 focus:ring-2 focus:ring-pink-500;
-        }
-    }
-    .invalidityWarning {
-        @apply after:absolute after:-bottom-4 after:content-['Обязательное_Поле'] after:text-xs after:text-pink-500;
     }
     .submit-btn {
-        @apply py-3 px-10 w-80 sm:w-48 lg:w-48 bg-green-600 hover:bg-green-700 active:bg-green-800
+        @apply py-3 px-10 w-80 sm:w-48 lg:w-44 bg-green-600 hover:bg-green-700 active:bg-green-800
                rounded-md shadow-sm text-white not-italic font-medium text-base leading-4
                hover:text-white hover:border-transparent 
                focus:outline-none focus:ring focus:ring-gray-300;
