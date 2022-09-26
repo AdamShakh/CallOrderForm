@@ -60,14 +60,10 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@tailwind components;
-
-@layer components {
-    .confirm-btn {
-        @apply h-10 rounded-md shadow-sm 
-               text-white not-italic font-medium text-base leading-4
-               hover:text-white hover:border-transparent 
-               focus:outline-none focus:ring focus:ring-gray-300;
-    }
+.confirm-btn {
+    @apply h-10 rounded-md shadow-sm 
+            text-white not-italic font-medium text-base leading-4
+            hover:text-white hover:border-transparent 
+            focus:outline-none focus:ring focus:ring-gray-300;
 }
 </style>

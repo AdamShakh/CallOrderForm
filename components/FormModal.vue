@@ -148,25 +148,21 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-@tailwind components;
-
-@layer components {
-    .modal {
-        @apply px-5 pt-6 pb-5 sm:px-6 sm:pb-8 lg:pb-6
-               bg-white rounded-md shadow-sm 
-               text-black not-italic font-medium text-base leading-5;
-    }
-    .input {
-        @apply py-2 px-3 h-10
-               text-gray-900 font-normal placeholder:text-gray-500 
-               bg-white border border-solid border-gray-300 shadow-sm rounded-md
-               focus:outline-none focus:ring-2 focus:ring-gray-300;
-    }
-    .submit-btn {
-        @apply py-3 px-10 w-80 sm:w-48 lg:w-44 bg-green-600 hover:bg-green-700 active:bg-green-800
-               rounded-md shadow-sm text-white not-italic font-medium text-base leading-4
-               hover:text-white hover:border-transparent 
-               focus:outline-none focus:ring focus:ring-gray-300;
-    }
+.modal {
+    @apply px-5 pt-6 pb-5 sm:px-6 sm:pb-8 lg:pb-6
+            bg-white rounded-md shadow-sm 
+            text-black not-italic font-medium text-base leading-5;
+}
+.input {
+    @apply py-2 px-3 h-10
+            text-gray-900 font-normal placeholder:text-gray-500 
+            bg-white border border-solid border-gray-300 shadow-sm rounded-md
+            focus:outline-none focus:ring-2 focus:ring-gray-300;
+}
+.submit-btn {
+    @apply py-3 px-10 w-80 sm:w-48 lg:w-44 bg-green-600 hover:bg-green-700 active:bg-green-800
+            rounded-md shadow-sm text-white not-italic font-medium text-base leading-4
+            hover:text-white hover:border-transparent 
+            focus:outline-none focus:ring focus:ring-gray-300;
 }
 </style>
